@@ -477,6 +477,56 @@ angular.module('bitbloqApp')
                     "uid": "6be0dd9d-2e52-4b7d-9dfc-c9edad53a200"
                 }]
             }
+        }, {
+            "name": "Arduino MEGA 2560",
+            "id": "ArduinoMEGA2560",
+            "mcu": "mega",
+            "vendorIds": ["0x2341"],
+            "productIds": ["0x10", "0x0042", "0x6001", "0x0010"],
+            "pinSize": {
+                "digital": {
+                    "w": 9,
+                    "h": 15
+                },
+                "analog": {
+                    "w": 9,
+                    "h": 15
+                },
+                "serial": {
+                    "w": 33,
+                    "h": 66
+                },
+                "i2c-4": {
+                    "w": 9,
+                    "h": 9
+                },
+                "i2c-5": {
+                    "w": 9,
+                    "h": 9
+                }
+            },
+            "pins": {
+                "digital": [],
+                "analog": [],
+                "serial": [{
+                    "x": 0.045,
+                    "y": 0.315,
+                    "name": "serial",
+                    "uid": ""
+                }],
+                "i2c-4": [{
+                    "x": 0.903,
+                    "y": 0.925,
+                    "name": "A4-H",
+                    "uid": ""
+                }],
+                "i2c-5": [{
+                    "x": 0.933,
+                    "y": 0.925,
+                    "name": "A5-H",
+                    "uid": ""
+                }]
+            }
         }],
         "components": {
             "leds": [{

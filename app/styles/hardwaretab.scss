@@ -305,6 +305,10 @@ $hw_toolbox: 210px;
             background-image: url(/images/boards/ArduinoUNO.svg);
             background-color: transparent;
         }
+        &.ArduinoMEGA2560 {
+            background-image: url(/images/boards/ArduinoMEGA2560.svg);
+            background-color: transparent;
+        }
     }
     .component {
         position: absolute;
