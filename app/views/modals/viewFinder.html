@@ -1,0 +1,10 @@
+<div class="viewfinder" data-ng-controller="ViewFinderCtrl">
+    <p>ViewFinder!</p>
+    <div class="loading" data-ng-show="showLoading">
+        loading
+        <button data-ng-click="loadBoard()">load board</button>
+    </div>
+    <div class="components" data-ng-show="!showLoading">
+        components
+    </div>
+</div>
