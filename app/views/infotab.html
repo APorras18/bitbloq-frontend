@@ -44,9 +44,9 @@
                     </div>
                     <div class="imagecontainer">
                         <div class="main--project--image" id="main-image">
-                            <img id="projectImage"  data-ng-disabled="!common.user" data-element="infotab-projectimage" ng-src="{{common.urlImage + 'project/' + projectService.project._id}}" err-src="../images/common/default-project.png">
+                            <img id="projectImage" data-ng-disabled="!common.user" data-element="infotab-projectimage" ng-src="{{common.urlImage + 'project/' + projectService.project._id}}" err-src="../images/common/default-project.png">
                         </div>
-                        <input class="btn btn--primary btn--small main-image--input" onchange="angular.element(this).scope().uploadImage(this.files)" type="file" id="projectimage" name="projectimage" placeholder="" data-ng-focus="focus = 'projectimage'" data-element="infotab-fileinput" tabindex="-1"/>
+                        <input class="btn btn--primary btn--small main-image--input" onchange="angular.element(this).scope().uploadImage(this.files)" type="file" id="projectimage" name="projectimage" placeholder="" data-ng-focus="focus = 'projectimage'" data-element="infotab-fileinput" tabindex="-1" />
                         <button type="button" ng-class="{'btn':true, 'btn--primary':true, 'btn--small':true, 'btn--disabled':!common.user}" data-element="infotab-uploadimage" data-ng-click="uploadImageTrigger('main')">{{ 'upload-image' | translate }}</button>
                     </div>
                 </div>
@@ -95,17 +95,25 @@
             </div>
             <div class="form--section choose--theme">
                 <common-dropdown options="availableThemes" heading-option="projectService.project.defaultTheme | translate" options-click="setTheme" element-data="'infotab-choosetheme'"></common-dropdown>
-                <img ng-show="projectService.project.defaultTheme === 'infotab_option_grayTheme' || !projectService.project.defaultTheme" src="../images/gray-theme.jpg" alt=""/>
-                <img ng-show="projectService.project.defaultTheme === 'infotab_option_colorTheme'" src="../images/color-theme.jpg" alt=""/>
+                <img ng-show="projectService.project.defaultTheme === 'infotab_option_grayTheme' || !projectService.project.defaultTheme" src="../images/gray-theme.jpg" alt="" />
+                <img ng-show="projectService.project.defaultTheme === 'infotab_option_colorTheme'" src="../images/color-theme.jpg" alt="" />
             </div>
         </fieldset>
         <fieldset ng-if="projectService.project.codeProject" class="fieldset--right" data-ng-init="focus = false">
             <div class="field--title">
-                <legend class="h3">{{ 'Board' | translate }}</legend>
+                <legend class="h3">{{ 'boards' | translate }}</legend>
             </div>
             <div class="form--section choose--theme">
                 <common-dropdown options="boardNameList" heading-option="projectService.project.hardware.board" options-click="setBoard" ng-model="projectService.project.hardware.board" element-data="'infotab-chooseboard'"></common-dropdown>
-                <img ng-src="/images/boards/{{boardImage}}.svg"/>
+                <img ng-src="/images/boards/{{boardImage}}.svg" />
+            </div>
+        </fieldset>
+        <fieldset ng-if="projectService.project.codeProject && (projectService.project.hardware.board === 'Generic board')" class="fieldset--right" data-ng-init="focus = false">
+            <div class="field--title">
+                <legend class="h3">{{ 'codeproject-infotab-select-generic-board' | translate }}</legend>
+            </div>
+            <div class="form--section choose--theme">
+                <common-dropdown options="genericBoardNameList" heading-option="projectService.project.genericBoardSelected.name" options-click="setGenericBoard" ng-model="projectService.project.genericBoardSelected" element-data="'infotab-choosegenericboard'"></common-dropdown>
             </div>
         </fieldset>
     </form>

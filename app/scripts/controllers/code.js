@@ -45,6 +45,7 @@ angular.module('bitbloqApp')
         };
 
         $scope.boardNameList = _.pluck(hardwareConstants.boards, 'name');
+        $scope.genericBoardNameList = _.pluck(hardwareConstants.genericBoards, 'name');
 
         $scope.common.isLoading = true;
 
@@ -53,7 +54,7 @@ angular.module('bitbloqApp')
         $scope.projectApi = projectApi;
         $scope.projectService = projectService;
         $scope.utils = utils;
-        
+
         $scope.onFieldKeyUp = function(event) {
             if ((event.ctrlKey || event.metaKey) && String.fromCharCode(event.which).toLowerCase() === 's') { //Ctrl + S
                 return true;
@@ -93,8 +94,19 @@ angular.module('bitbloqApp')
             }
             projectService.project.hardware.board = boardName || 'bq ZUM'; //Default board is ZUM
             var boardMetadata = projectService.getBoardMetaData();
-            $scope.boardImage = boardMetadata && boardMetadata.id;
+            if (boardName === 'Generic board') {
+                $scope.boardImage = 'GenericBoard';
+            } else {
+                $scope.boardImage = boardMetadata && boardMetadata.id;
+            }
+
             projectService.project.hardwareTags.push(projectService.project.hardware.board);
+        };
+
+        $scope.setGenericBoard = function(boardName) {
+            projectService.project.genericBoardSelected = _.find(hardwareConstants.genericBoards, {
+                name: boardName
+            });
         };
 
         $scope.toggleCollapseHeader = function() {
@@ -454,7 +466,6 @@ angular.module('bitbloqApp')
                 });
             }
         }
-
 
         /*************************************************
          web2board communication
